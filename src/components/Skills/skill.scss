@@ -1,9 +1,9 @@
 @use "sass:color";
 
 .skills-section {
-  padding: 80px 10%;
   /* center the content area */
   display: block;
+  width: 100%;
 }
 
 .skills-header {
@@ -108,6 +108,6 @@
 
 @media (min-width: 1200px) {
   .skills-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

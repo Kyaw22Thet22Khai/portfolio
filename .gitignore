@@ -24,12 +24,6 @@ dist-ssr
 *.sw?
 
 # Environment files (do not commit secrets)
-.env
-.env.local
-.env.development
-.env.production
-.env.development.local
-.env.test.local
-.env.production.local
-# Keep example tracked
-!.env.example
+.env*
+# Keep production
+!.env.production
