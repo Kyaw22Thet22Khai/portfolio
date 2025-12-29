@@ -1,0 +1,211 @@
+// Underline style for active nav item
+.nav-link.active-nav {
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    border-radius: 2px;
+    transition: width 0.2s;
+  }
+}
+// Navbar styles (SCSS)
+// Uses global CSS variables from styles/variable.css
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(38, 70, 83, 0.85); // var(--bg-main) with alpha
+  backdrop-filter: saturate(180%) blur(8px);
+  -webkit-backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-family);
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 72px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  text-decoration: none;
+  line-height: 1; // avoid baseline offset
+
+  .brand-logo {
+    display: block;
+    height: 40px;
+    width: auto;
+  }
+
+  .brand-text {
+    display: inline-block;
+    font-weight: var(--font-weight-semibold);
+    font-size: 1rem;
+    color: var(--bs-white);
+    align-self: center;
+  }
+}
+
+.navbar-toggler {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+
+  &-icon {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 1px;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 1px;
+      position: absolute;
+    }
+
+    &::before {
+      top: -6px;
+    }
+
+    &::after {
+      top: 6px;
+    }
+  }
+}
+
+.navbar-collapse {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-nav {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child)::after {
+      content: "";
+      display: inline-block;
+      width: 1px;
+      height: 1em; // match text height visually
+      background: rgba(255, 255, 255, 0.5);
+      margin-left: 20px;
+    }
+  }
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: var(--font-weight-medium);
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &.active {
+    color: var(--accent);
+  }
+}
+
+.btn-rounded {
+  background: var(--bg-main);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-weight: var(--font-weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.2s ease, background 0.2s ease;
+
+  &:hover {
+    background: var(--bg-secondary);
+    box-shadow: 0 10px 24px var(--bg-secondary);
+    transform: translateY(-1px);
+  }
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.15);
+  }
+}
+
+// Ensure content isn't hidden behind fixed navbar
+body {
+  padding-top: 80px;
+}
+
+// Responsive
+@media (max-width: 991px) {
+  .navbar-toggler {
+    display: inline-flex;
+  }
+
+  .navbar-collapse {
+    width: 100%;
+  }
+
+  .navbar-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+  }
+
+  .btn-rounded {
+    align-self: flex-start;
+    margin-top: 8px;
+  }
+}
